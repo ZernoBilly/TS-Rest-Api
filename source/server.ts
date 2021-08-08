@@ -8,4 +8,6 @@ const NAMESPACE = 'Server';
 const router = express();
 
 //Logging the request
-router.use;
+router.use((req, res, next) => {
+    logging.info(NAMESPACE, `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}]`);
+});
