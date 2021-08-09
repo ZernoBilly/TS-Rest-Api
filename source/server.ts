@@ -6,6 +6,7 @@ import config from './config/config';
 import mongoose from 'mongoose';
 
 import projectCardRoutes from './routes/projectCards';
+import userRoutes from './routes/users';
 
 const NAMESPACE = 'Server';
 const app = express();
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.use('/api/projectCards', projectCardRoutes);
+app.use('/api/users', userRoutes);
 
 //Error handling
 app.use((req, res, next) => {
@@ -48,8 +50,6 @@ app.use((req, res, next) => {
     return res.status(404).json({
         message: error.message
     });
-
-    next();
 });
 
 //Create Server
